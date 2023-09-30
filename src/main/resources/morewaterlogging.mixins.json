@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "package": "com.zer.morewaterlogging.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "AbstractBlockMixin",
+    "AbstractRedstoneGateBlockMixin",
+    "BlockMixin",
+    "GetPlacementStateMixin",
+    "GetStateForNeighborUpdateMixin",
+    "NewWaterLoggable",
+    "WallMountedBlockMixin",
+    "special.BedBlockMixin",
+    "special.DoorBlockMixin",
+    "special.FlowerPotBlockMixin",
+    "special.PistonBlockMixin",
+    "special.RedstoneWireBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}
