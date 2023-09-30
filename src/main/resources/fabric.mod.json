@@ -6,7 +6,7 @@
 	"description": "This mod adds waterlogging property to many vanilla blocks",
 	"authors": ["zer"],
 	"contact": {"homepage": "",	"sources": ""},
-	"license": "CC BY-SA",
+	"license": "GPL-3.0",
 	"icon": "assets/morewaterlogging/icon.png",
 	"environment": "*",
 	"entrypoints": {
