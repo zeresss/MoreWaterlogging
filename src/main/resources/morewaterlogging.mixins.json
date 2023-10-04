@@ -4,12 +4,10 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "AbstractBlockMixin",
-    "AbstractRedstoneGateBlockMixin",
     "BlockMixin",
     "GetPlacementStateMixin",
     "GetStateForNeighborUpdateMixin",
     "NewWaterLoggable",
-    "WallMountedBlockMixin",
     "special.BedBlockMixin",
     "special.DoorBlockMixin",
     "special.FlowerPotBlockMixin",
