@@ -21,10 +21,11 @@ public abstract class GetPlacementStateMixin {
 
     @Inject(method = "getPlacementState(Lnet/minecraft/item/ItemPlacementContext;)Lnet/minecraft/block/BlockState;", at = @At("RETURN"), cancellable = true)
     public void getPlacementState(ItemPlacementContext ctx, CallbackInfoReturnable<BlockState> cir) {
+        if (!(this instanceof NewWaterLoggable)) return;
         BlockState returnValue = cir.getReturnValue();
         if (returnValue == null) return;
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
-        boolean isWater = fluidState.getFluid().equals(Fluids.WATER);
+        boolean isWater = fluidState.getFluid() == Fluids.WATER;
         cir.setReturnValue(returnValue.with(Properties.WATERLOGGED, isWater));
     }
 
