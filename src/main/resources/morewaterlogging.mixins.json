@@ -9,6 +9,7 @@
     "GetStateForNeighborUpdateMixin",
     "NewWaterLoggable",
     "special.BedBlockMixin",
+    "special.CakeBlockMixin",
     "special.DoorBlockMixin",
     "special.FlowerPotBlockMixin",
     "special.PistonBlockMixin",

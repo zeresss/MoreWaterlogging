@@ -18,7 +18,7 @@ public abstract class RedstoneWireBlockMixin {
     @Inject(method = "getDefaultWireState", at = @At("RETURN"), cancellable = true)
     public void getDefaultWireState(BlockView world, BlockState state, BlockPos pos, CallbackInfoReturnable<BlockState> cir) {
         FluidState fluidState = world.getFluidState(pos);
-        boolean isWater = fluidState.getFluid().equals(Fluids.WATER);
+        boolean isWater = fluidState.getFluid() == Fluids.WATER;
         cir.setReturnValue(cir.getReturnValue().with(Properties.WATERLOGGED, isWater));
     }
 
