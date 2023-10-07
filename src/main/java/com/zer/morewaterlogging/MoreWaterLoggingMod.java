@@ -24,6 +24,7 @@ public class MoreWaterLoggingMod implements ModInitializer {
 			if (block instanceof NewWaterLoggable)
 				StateRefresher.INSTANCE.addBlockProperty(block, Properties.WATERLOGGED, false);
 		}
+		StateRefresher.INSTANCE.reorderBlockStates();
 	}
 
 }
