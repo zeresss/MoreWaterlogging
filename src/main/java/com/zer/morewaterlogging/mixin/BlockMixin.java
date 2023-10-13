@@ -25,7 +25,7 @@ public abstract class BlockMixin {
      */
     @Inject(method = "<init>", at = @At("TAIL"))
     public void init(AbstractBlock.Settings settings, CallbackInfo ci) {
-        if (this instanceof NewWaterloggable && defaultState.contains(Properties.WATERLOGGED))
+        if (this instanceof NewWaterLoggable && defaultState.contains(Properties.WATERLOGGED))
             defaultState = defaultState.with(Properties.WATERLOGGED, false);
     }
 
@@ -35,7 +35,7 @@ public abstract class BlockMixin {
      */
     @Inject(method = "setDefaultState", at = @At("TAIL"))
     public void setDefaultState(BlockState state, CallbackInfo ci) {
-        if (this instanceof NewWaterloggable && state.contains(Properties.WATERLOGGED))
+        if (this instanceof NewWaterLoggable && state.contains(Properties.WATERLOGGED))
             defaultState = defaultState.with(Properties.WATERLOGGED, false);
     }
 
@@ -45,7 +45,7 @@ public abstract class BlockMixin {
      */
     @Inject(method = "getPlacementState", at = @At("RETURN"), cancellable = true)
     public void getPlacementState(ItemPlacementContext ctx, CallbackInfoReturnable<BlockState> cir) {
-        if (!(this instanceof NewWaterloggable)) return;
+        if (!(this instanceof NewWaterLoggable)) return;
         BlockState returnValue = cir.getReturnValue();
         if (returnValue == null) return;
         if (!returnValue.contains(Properties.WATERLOGGED)) return;

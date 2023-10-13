@@ -1,6 +1,6 @@
 package com.zer.morewaterlogging;
 
-import com.zer.morewaterlogging.mixin.NewWaterloggable;
+import com.zer.morewaterlogging.mixin.NewWaterLoggable;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryKey;
@@ -21,7 +21,7 @@ public class MoreWaterLoggingMod implements ModInitializer {
 	public void onInitialize() {
 		for (Map.Entry<RegistryKey<Block>, Block> entry : Registries.BLOCK.getEntrySet()) {
 			Block block = entry.getValue();
-			if (block instanceof NewWaterloggable)
+			if (block instanceof NewWaterLoggable)
 				StateRefresher.INSTANCE.addBlockProperty(block, Properties.WATERLOGGED, false);
 		}
 		StateRefresher.INSTANCE.reorderBlockStates();
