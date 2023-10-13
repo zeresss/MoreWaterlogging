@@ -17,26 +17,38 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Block.class)
 public abstract class BlockMixin {
 
-    @Shadow
-    private BlockState defaultState;
+    @Shadow private BlockState defaultState;
 
+    /**
+     * @since 1.0.0
+     * adds waterlogged property to default state
+     */
     @Inject(method = "<init>", at = @At("TAIL"))
     public void init(AbstractBlock.Settings settings, CallbackInfo ci) {
-        if (this instanceof NewWaterLoggable)
+        if (this instanceof NewWaterloggable && defaultState.contains(Properties.WATERLOGGED))
             defaultState = defaultState.with(Properties.WATERLOGGED, false);
     }
 
+    /**
+     * @since 1.0.0
+     * adds waterlogged property to set default state method
+     */
     @Inject(method = "setDefaultState", at = @At("TAIL"))
     public void setDefaultState(BlockState state, CallbackInfo ci) {
-        if (this instanceof NewWaterLoggable)
+        if (this instanceof NewWaterloggable && state.contains(Properties.WATERLOGGED))
             defaultState = defaultState.with(Properties.WATERLOGGED, false);
     }
 
+    /**
+     * @since 1.0.0
+     * makes block be initially waterlogged when placed underwater
+     */
     @Inject(method = "getPlacementState", at = @At("RETURN"), cancellable = true)
     public void getPlacementState(ItemPlacementContext ctx, CallbackInfoReturnable<BlockState> cir) {
-        if (!(this instanceof NewWaterLoggable)) return;
+        if (!(this instanceof NewWaterloggable)) return;
         BlockState returnValue = cir.getReturnValue();
         if (returnValue == null) return;
+        if (!returnValue.contains(Properties.WATERLOGGED)) return;
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
         boolean isWater = fluidState.getFluid() == Fluids.WATER;
         cir.setReturnValue(returnValue.with(Properties.WATERLOGGED, isWater));

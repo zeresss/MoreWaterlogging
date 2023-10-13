@@ -19,9 +19,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 })
 public abstract class GetStateForNeighborUpdateMixin {
 
+    /**
+     * @since 1.0.0
+     * makes block correctly handle the flowing of water
+     */
     @Inject(method = "getStateForNeighborUpdate", at = @At("HEAD"))
     public void getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos, CallbackInfoReturnable<BlockState> cir) {
-        if (this instanceof NewWaterLoggable) if (state.get(Properties.WATERLOGGED))
+        if (this instanceof NewWaterloggable) if (state.get(Properties.WATERLOGGED))
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
     }
 

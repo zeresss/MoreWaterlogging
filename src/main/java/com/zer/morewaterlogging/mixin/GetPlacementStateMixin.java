@@ -19,9 +19,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 })
 public abstract class GetPlacementStateMixin {
 
+    /**
+     * @since 1.0.0
+     * makes block be initially waterlogged when placed underwater
+     */
     @Inject(method = "getPlacementState(Lnet/minecraft/item/ItemPlacementContext;)Lnet/minecraft/block/BlockState;", at = @At("RETURN"), cancellable = true)
     public void getPlacementState(ItemPlacementContext ctx, CallbackInfoReturnable<BlockState> cir) {
-        if (!(this instanceof NewWaterLoggable)) return;
+        if (!(this instanceof NewWaterloggable)) return;
         BlockState returnValue = cir.getReturnValue();
         if (returnValue == null) return;
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
