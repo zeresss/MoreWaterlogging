@@ -17,6 +17,10 @@ import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 @Mixin(DoorBlock.class)
 public abstract class DoorBlockMixin {
 
+    /**
+     * @since 1.0.0
+     * makes upper door part not copy lower door part waterlogged property
+     */
     @ModifyArgs(method = "onPlaced", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
     public void onPlaced(Args args, World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
         FluidState upFluidState = world.getFluidState(pos.up());

@@ -10,8 +10,10 @@
     "NewWaterLoggable",
     "special.BedBlockMixin",
     "special.CakeBlockMixin",
+    "special.CandleCakeBlockMixin",
     "special.DoorBlockMixin",
     "special.FlowerPotBlockMixin",
+    "special.PistonBlockEntityMixin",
     "special.PistonBlockMixin",
     "special.RedstoneWireBlockMixin"
   ],

@@ -16,6 +16,10 @@ import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 @Mixin(FlowerPotBlock.class)
 public abstract class FlowerPotBlockMixin {
 
+    /**
+     * @since 1.0.0
+     * makes putting or taking flower not cause water pocket
+     */
     @ModifyArgs(method = "onUse", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
     public void onUse(Args args, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         boolean isWaterLogged = state.get(Properties.WATERLOGGED);

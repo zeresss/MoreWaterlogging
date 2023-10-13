@@ -6,7 +6,6 @@ import net.minecraft.block.Block;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import virtuoel.statement.api.StateRefresher;
@@ -23,9 +22,9 @@ public class MoreWaterLoggingMod implements ModInitializer {
 		for (Map.Entry<RegistryKey<Block>, Block> entry : Registry.BLOCK.getEntrySet()) {
 			Block block = entry.getValue();
 			if (block instanceof NewWaterLoggable)
-				StateRefresher.INSTANCE.reorderBlockStates();
-			StateRefresher.INSTANCE.addBlockProperty(block, Properties.WATERLOGGED, false);
+				StateRefresher.INSTANCE.addBlockProperty(block, Properties.WATERLOGGED, false);
 		}
+		StateRefresher.INSTANCE.reorderBlockStates();
 	}
 
 }

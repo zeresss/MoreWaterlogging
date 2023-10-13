@@ -15,6 +15,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(RedstoneWireBlock.class)
 public abstract class RedstoneWireBlockMixin {
 
+    /**
+     * @since 1.0.0
+     * adds waterlogged property to default wire state
+     */
     @Inject(method = "getDefaultWireState", at = @At("RETURN"), cancellable = true)
     public void getDefaultWireState(BlockView world, BlockState state, BlockPos pos, CallbackInfoReturnable<BlockState> cir) {
         FluidState fluidState = world.getFluidState(pos);
