@@ -1,8 +1,6 @@
 package com.zer.morewaterlogging.mixin.special;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.PistonBlockEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -12,11 +10,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 @Mixin(PistonBlockEntity.class)
-public abstract class PistonBlockEntityMixin extends BlockEntity {
-
-    public PistonBlockEntityMixin(BlockEntityType<?> type, BlockPos pos, BlockState state) {
-        super(type, pos, state);
-    }
+public abstract class PistonBlockEntityMixin {
 
     /**
      * @since 1.0.1
