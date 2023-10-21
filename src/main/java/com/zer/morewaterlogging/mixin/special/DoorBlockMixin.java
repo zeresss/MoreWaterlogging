@@ -3,7 +3,6 @@ package com.zer.morewaterlogging.mixin.special;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DoorBlock;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.property.Properties;
@@ -23,8 +22,7 @@ public abstract class DoorBlockMixin {
      */
     @ModifyArgs(method = "onPlaced", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
     public void onPlaced(Args args, World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
-        FluidState upFluidState = world.getFluidState(pos.up());
-        boolean isWater = upFluidState.getFluid() == Fluids.WATER;
+        boolean isWater = world.getFluidState(args.get(0)).getFluid() == Fluids.WATER;
         BlockState argBlockState = args.get(1);
         args.set(1, argBlockState.with(Properties.WATERLOGGED, isWater));
     }

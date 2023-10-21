@@ -3,8 +3,6 @@ package com.zer.morewaterlogging.mixin.special;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CakeBlock;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -36,10 +34,9 @@ public abstract class CakeBlockMixin {
      */
     @ModifyArgs(method = "tryEat", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/WorldAccess;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
     private static void tryEat(Args args, WorldAccess world, BlockPos pos, BlockState state, PlayerEntity player) {
-        FluidState fluidState = world.getFluidState(pos);
-        boolean isWater = fluidState.getFluid() == Fluids.WATER;
+        boolean isWaterLogged = world.getBlockState(pos).get(Properties.WATERLOGGED);
         BlockState argBlockState = args.get(1);
-        args.set(1, argBlockState.with(Properties.WATERLOGGED, isWater));
+        args.set(1, argBlockState.with(Properties.WATERLOGGED, isWaterLogged));
     }
 
 }
