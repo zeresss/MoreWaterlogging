@@ -22,9 +22,10 @@ public abstract class DoorBlockMixin {
      */
     @ModifyArgs(method = "onPlaced", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
     public void onPlaced(Args args, World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
-        boolean isWater = world.getFluidState(args.get(0)).getFluid() == Fluids.WATER;
-        BlockState argBlockState = args.get(1);
-        args.set(1, argBlockState.with(Properties.WATERLOGGED, isWater));
+        if (state.contains(Properties.WATERLOGGED) && world.getFluidState(args.get(0)).getFluid() == Fluids.WATER) {
+            BlockState argBlockState = args.get(1);
+            args.set(1, argBlockState.with(Properties.WATERLOGGED, true));
+        }
     }
 
 }

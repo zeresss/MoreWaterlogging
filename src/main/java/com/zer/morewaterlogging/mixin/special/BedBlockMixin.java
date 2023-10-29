@@ -20,23 +20,22 @@ public abstract class BedBlockMixin {
 
     /**
      * @since 1.0.0
-     * makes far bed part not copy close bed part waterlogged property
+     * makes head bed part not copy foot bed part waterlogged property
      */
     @ModifyArgs(method = "onPlaced", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
     public void onPlaced(Args args, World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
         BlockState argBlockState = args.get(1);
-        boolean isWater = argBlockState.getFluidState().getFluid() == Fluids.WATER;
-        args.set(1, argBlockState.with(Properties.WATERLOGGED, isWater));
+        if (argBlockState.contains(Properties.WATERLOGGED) && argBlockState.getFluidState().getFluid() == Fluids.WATER)
+            args.set(1, argBlockState.with(Properties.WATERLOGGED, true));
     }
 
     /**
      * @since 1.0.1
-     * makes far bed part not cause air pocket when bed is broken
+     * makes head bed part not cause air pocket when bed is broken
      */
     @ModifyArgs(method = "onBreak", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
     public void onBreak(Args args, World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        BlockState argBlockState = args.get(1);
-        if (argBlockState.get(Properties.WATERLOGGED))
+        if (state.contains(Properties.WATERLOGGED) && state.get(Properties.WATERLOGGED))
             args.set(1, Blocks.WATER.getDefaultState());
     }
 
