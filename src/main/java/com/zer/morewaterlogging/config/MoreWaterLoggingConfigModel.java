@@ -27,6 +27,7 @@ public class MoreWaterLoggingConfigModel {
     @RestartRequired public boolean comparator = true;
     @RestartRequired public boolean daylightDetector = true;
     @RestartRequired public boolean door = true;
+    @RestartRequired public boolean dragonEgg = true;
     @RestartRequired public boolean enchantingTable = true;
     @RestartRequired public boolean endRod = true;
     @RestartRequired public boolean endPortalFrame = true;

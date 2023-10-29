@@ -14,6 +14,7 @@
     "special.CakeBlockMixin",
     "special.CandleCakeBlockMixin",
     "special.DoorBlockMixin",
+    "special.DragonEggBlockMixin",
     "special.FlowerPotBlockMixin",
     "special.PistonBlockEntityMixin",
     "special.PistonBlockMixin",
