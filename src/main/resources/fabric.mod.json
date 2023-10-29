@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "more-water-logging",
+	"id": "morewaterlogging",
 	"version": "${version}",
 	"name": "More Water Logging",
 	"description": "This mod adds waterlogged property to many vanilla blocks",
@@ -21,9 +21,11 @@
 		"morewaterlogging.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.14.23",
-		"minecraft": ">=1.19.3 <=1.20.1",
-		"java": ">=17"
+		"fabricloader": "*",
+		"minecraft": ">=1.19.3 <=1.20.1"
+	},
+	"suggests": {
+		"modmenu": "*"
 	},
 	"custom": {
 		"modmenu": {
