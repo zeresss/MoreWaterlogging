@@ -22,7 +22,7 @@ public abstract class AbstractBlockMixin {
      */
     @Inject(method = "getStateForNeighborUpdate", at = @At("HEAD"))
     public void getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos, CallbackInfoReturnable<BlockState> cir) {
-        if (this instanceof NewWaterLoggable && state.contains(Properties.WATERLOGGED) && state.get(Properties.WATERLOGGED))
+        if (this instanceof NewWaterloggable && state.contains(Properties.WATERLOGGED) && state.get(Properties.WATERLOGGED))
             world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
     }
 
@@ -32,7 +32,7 @@ public abstract class AbstractBlockMixin {
      */
     @Inject(method = "getFluidState", at = @At("RETURN"), cancellable = true)
     public void getFluidState(BlockState state, CallbackInfoReturnable<FluidState> cir) {
-        if (this instanceof NewWaterLoggable && state.contains(Properties.WATERLOGGED) && state.get(Properties.WATERLOGGED))
+        if (this instanceof NewWaterloggable && state.contains(Properties.WATERLOGGED) && state.get(Properties.WATERLOGGED))
             cir.setReturnValue(Fluids.WATER.getStill(false));
     }
 
