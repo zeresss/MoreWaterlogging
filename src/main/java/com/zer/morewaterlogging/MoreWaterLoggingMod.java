@@ -48,6 +48,7 @@ public class MoreWaterLoggingMod implements ModInitializer {
 		else if (block instanceof ComparatorBlock) return CONFIG.comparator();
 		else if (block instanceof DaylightDetectorBlock) return CONFIG.daylightDetector();
 		else if (block instanceof DoorBlock) return CONFIG.door();
+		else if (block instanceof DragonEggBlock) return CONFIG.dragonEgg();
 		else if (block instanceof EnchantingTableBlock) return CONFIG.enchantingTable();
 		else if (block instanceof EndPortalFrameBlock) return CONFIG.endPortalFrame();
 		else if (block instanceof EndRodBlock) return CONFIG.endRod();
