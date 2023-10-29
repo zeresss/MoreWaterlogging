@@ -3,7 +3,6 @@ package com.zer.morewaterlogging.mixin;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.property.Properties;
@@ -25,7 +24,7 @@ public abstract class BlockMixin {
      */
     @Inject(method = "<init>", at = @At("TAIL"))
     public void init(AbstractBlock.Settings settings, CallbackInfo ci) {
-        if (this instanceof NewWaterLoggable && defaultState.contains(Properties.WATERLOGGED))
+        if (this instanceof NewWaterloggable && defaultState.contains(Properties.WATERLOGGED))
             defaultState = defaultState.with(Properties.WATERLOGGED, false);
     }
 
@@ -35,23 +34,19 @@ public abstract class BlockMixin {
      */
     @Inject(method = "setDefaultState", at = @At("TAIL"))
     public void setDefaultState(BlockState state, CallbackInfo ci) {
-        if (this instanceof NewWaterLoggable && state.contains(Properties.WATERLOGGED))
+        if (this instanceof NewWaterloggable && state.contains(Properties.WATERLOGGED))
             defaultState = defaultState.with(Properties.WATERLOGGED, false);
     }
 
     /**
      * @since 1.0.0
-     * makes block be initially waterlogged when placed underwater
+     * makes block initially waterlogged when placed underwater
      */
     @Inject(method = "getPlacementState", at = @At("RETURN"), cancellable = true)
     public void getPlacementState(ItemPlacementContext ctx, CallbackInfoReturnable<BlockState> cir) {
-        if (!(this instanceof NewWaterLoggable)) return;
         BlockState returnValue = cir.getReturnValue();
-        if (returnValue == null) return;
-        if (!returnValue.contains(Properties.WATERLOGGED)) return;
-        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
-        boolean isWater = fluidState.getFluid() == Fluids.WATER;
-        cir.setReturnValue(returnValue.with(Properties.WATERLOGGED, isWater));
+        if (this instanceof NewWaterloggable && returnValue != null && returnValue.contains(Properties.WATERLOGGED) && ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER)
+            cir.setReturnValue(returnValue.with(Properties.WATERLOGGED, true));
     }
 
 }

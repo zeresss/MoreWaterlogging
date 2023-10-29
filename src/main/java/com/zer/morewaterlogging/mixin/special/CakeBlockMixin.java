@@ -23,9 +23,10 @@ public abstract class CakeBlockMixin {
      */
     @ModifyArgs(method = "onUse", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)Z"))
     public void onUse(Args args, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        boolean isWaterLogged = state.get(Properties.WATERLOGGED);
-        BlockState argBlockState = args.get(1);
-        args.set(1, argBlockState.with(Properties.WATERLOGGED, isWaterLogged));
+        if (state.get(Properties.WATERLOGGED)) {
+            BlockState argBlockState = args.get(1);
+            args.set(1, argBlockState.with(Properties.WATERLOGGED, true));
+        }
     }
 
     /**
@@ -34,9 +35,10 @@ public abstract class CakeBlockMixin {
      */
     @ModifyArgs(method = "tryEat", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/WorldAccess;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
     private static void tryEat(Args args, WorldAccess world, BlockPos pos, BlockState state, PlayerEntity player) {
-        boolean isWaterLogged = world.getBlockState(pos).get(Properties.WATERLOGGED);
-        BlockState argBlockState = args.get(1);
-        args.set(1, argBlockState.with(Properties.WATERLOGGED, isWaterLogged));
+        if (world.getBlockState(pos).get(Properties.WATERLOGGED)) {
+            BlockState argBlockState = args.get(1);
+            args.set(1, argBlockState.with(Properties.WATERLOGGED, true));
+        }
     }
 
 }

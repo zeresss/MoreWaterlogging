@@ -7,7 +7,7 @@
     "BlockMixin",
     "GetPlacementStateMixin",
     "GetStateForNeighborUpdateMixin",
-    "NewWaterLoggable",
+    "NewWaterloggable",
     "special.BedBlockMixin",
     "special.CakeBlockMixin",
     "special.CandleCakeBlockMixin",

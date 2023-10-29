@@ -12,4 +12,4 @@ import org.spongepowered.asm.mixin.Mixin;
     LeverBlock.class, PistonBlock.class, PistonExtensionBlock.class, PistonHeadBlock.class, RedstoneTorchBlock.class,
     RedstoneWireBlock.class, RepeaterBlock.class, StonecutterBlock.class, VineBlock.class
 })
-public interface NewWaterLoggable extends Waterloggable {}
+public interface NewWaterloggable extends Waterloggable {}
