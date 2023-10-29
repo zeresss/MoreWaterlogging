@@ -1,13 +1,13 @@
 {
 	"schemaVersion": 1,
-	"id": "more-water-logging",
+	"id": "morewaterlogging",
 	"version": "${version}",
 	"name": "More Water Logging",
-	"description": "This mod adds waterlogging property to many vanilla blocks",
+	"description": "This mod adds waterlogged property to many vanilla blocks",
 	"authors": ["zer"],
 	"contact": {
-		"homepage": "https://modrinth.com/mod/morewaterlogging",
-		"sources": "https://github.com/zeresss/more-water-logging"
+		"sources": "https://github.com/zeresss/more-water-logging",
+		"issues": "https://github.com/zeresss/more-water-logging/issues"
 	},
 	"license": "GPL-3.0",
 	"icon": "assets/morewaterlogging/icon.png",
@@ -21,9 +21,16 @@
 		"morewaterlogging.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.14.23",
-		"minecraft": ">=1.18 <=1.18.1",
-		"java": ">=17"
+		"fabricloader": "*",
+		"minecraft": ">=1.18 <=1.18.1"
 	},
-	"suggests": {}
+	"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.modrinth": "https://modrinth.com/mod/morewaterlogging",
+				"modmenu.curseforge": "https://www.curseforge.com/minecraft/mc-mods/morewaterlogging",
+				"modmenu.donate": "https://boosty.to/zeress/donate"
+			}
+		}
+	}
 }

@@ -20,13 +20,13 @@ public abstract class BedBlockMixin {
 
     /**
      * @since 1.0.0
-     * makes far bed part not copy close bed part waterlogged property
+     * makes head bed part not copy foot bed part waterlogged property
      */
     @ModifyArgs(method = "onPlaced", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
     public void onPlaced(Args args, World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
         BlockState argBlockState = args.get(1);
-        boolean isWater = argBlockState.getFluidState().getFluid() == Fluids.WATER;
-        args.set(1, argBlockState.with(Properties.WATERLOGGED, isWater));
+        if (argBlockState.getFluidState().getFluid() == Fluids.WATER)
+            args.set(1, argBlockState.with(Properties.WATERLOGGED, true));
     }
 
     /**
