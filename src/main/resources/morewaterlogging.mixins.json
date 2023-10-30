@@ -5,8 +5,6 @@
   "mixins": [
     "AbstractBlockMixin",
     "BlockMixin",
-    "BucketItemMixin",
-    "FlowableFluidMixin",
     "GetPlacementStateMixin",
     "GetStateForNeighborUpdateMixin",
     "NewWaterloggable",

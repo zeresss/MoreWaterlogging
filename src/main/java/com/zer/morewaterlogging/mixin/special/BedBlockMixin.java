@@ -25,7 +25,7 @@ public abstract class BedBlockMixin {
     @ModifyArgs(method = "onPlaced", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
     public void onPlaced(Args args, World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
         BlockState argBlockState = args.get(1);
-        if (argBlockState.contains(Properties.WATERLOGGED) && argBlockState.getFluidState().getFluid() == Fluids.WATER)
+        if (argBlockState.getFluidState().getFluid() == Fluids.WATER)
             args.set(1, argBlockState.with(Properties.WATERLOGGED, true));
     }
 
@@ -35,7 +35,7 @@ public abstract class BedBlockMixin {
      */
     @ModifyArgs(method = "onBreak", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
     public void onBreak(Args args, World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        if (state.contains(Properties.WATERLOGGED) && state.get(Properties.WATERLOGGED))
+        if (state.get(Properties.WATERLOGGED))
             args.set(1, Blocks.WATER.getDefaultState());
     }
 

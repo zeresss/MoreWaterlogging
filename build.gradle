@@ -12,8 +12,6 @@ base {
 
 repositories {
 	maven {url = "https://jitpack.io"} // statement lib
-	maven {url = "https://maven.wispforest.io"} // owo lib
-	maven {url = "https://maven.terraformersmc.com"} // mod menu
 }
 
 dependencies {
@@ -21,21 +19,10 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-	// fabric api
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-
 	// statement lib
 	modApi("com.github.Virtuoel:Statement:${project.statement_version}", {
 		exclude group: "net.fabricmc.fabric-api"
 	})
-
-	// owo lib
-	modImplementation "io.wispforest:owo-lib:${project.owo_version}"
-	include "io.wispforest:owo-sentinel:${project.owo_version}"
-	annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
-
-	// mod menu
-	modImplementation "com.terraformersmc:modmenu:${project.mod_menu_version}"
 }
 
 processResources {
