@@ -45,7 +45,7 @@ public abstract class BlockMixin {
     @Inject(method = "getPlacementState", at = @At("RETURN"), cancellable = true)
     public void getPlacementState(ItemPlacementContext ctx, CallbackInfoReturnable<BlockState> cir) {
         BlockState returnValue = cir.getReturnValue();
-        if (this instanceof NewWaterloggable && returnValue != null && returnValue.contains(Properties.WATERLOGGED) && ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER)
+        if (this instanceof NewWaterloggable && returnValue != null && returnValue.contains(Properties.WATERLOGGED) && ctx.getWorld().getFluidState(ctx.getBlockPos()).isOf(Fluids.WATER))
             cir.setReturnValue(returnValue.with(Properties.WATERLOGGED, true));
     }
 
