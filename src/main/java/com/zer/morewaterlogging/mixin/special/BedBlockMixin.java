@@ -35,8 +35,7 @@ public abstract class BedBlockMixin {
      */
     @ModifyArgs(method = "onBreak", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
     public void onBreak(Args args, World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        BlockState argBlockState = args.get(1);
-        if (argBlockState.get(Properties.WATERLOGGED))
+        if (state.get(Properties.WATERLOGGED))
             args.set(1, Blocks.WATER.getDefaultState());
     }
 
