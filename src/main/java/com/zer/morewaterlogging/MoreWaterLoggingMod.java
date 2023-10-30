@@ -12,8 +12,6 @@ import java.util.Map;
 
 public class MoreWaterLoggingMod implements ModInitializer {
 
-	public static final String MOD_ID = "morewaterlogging";
-
 	@Override
 	public void onInitialize() {
 		for (Map.Entry<RegistryKey<Block>, Block> entry : Registry.BLOCK.getEntrySet()) {
