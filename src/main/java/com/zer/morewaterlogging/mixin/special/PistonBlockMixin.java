@@ -32,10 +32,8 @@ public abstract class PistonBlockMixin {
      */
     @ModifyArgs(method = "onSyncedBlockEvent", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/PistonExtensionBlock;createBlockEntityPiston(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;Lnet/minecraft/block/BlockState;Lnet/minecraft/util/math/Direction;ZZ)Lnet/minecraft/block/entity/BlockEntity;"))
     public void onSyncedBlockEntityEvent(Args args, BlockState state, World world, BlockPos pos, int type, int data) {
-        if (world.getFluidState(args.get(0)).getFluid() == Fluids.WATER) {
-            BlockState argBlockState = args.get(2);
-            args.set(2, argBlockState.with(Properties.WATERLOGGED, true));
-        }
+        if (world.getFluidState(args.get(0)).getFluid() == Fluids.WATER)
+            args.set(2, args.<BlockState>get(2).with(Properties.WATERLOGGED, true));
     }
 
 }
