@@ -26,8 +26,7 @@ public abstract class CandleCakeBlockMixin {
         cir.setReturnValue(
             state.isIn(
                 BlockTags.CANDLE_CAKES, (statex) ->
-                    statex.contains(LIT) && statex.contains(Properties.WATERLOGGED)
-                    && !state.get(LIT) && !state.get(Properties.WATERLOGGED)
+                    !state.get(LIT) && !state.get(Properties.WATERLOGGED)
             )
         );
     }
