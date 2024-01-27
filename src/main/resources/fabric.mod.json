@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "morewaterlogging",
-	"version": "${version}",
+	"version": "${mod_version}",
 	"name": "More Water Logging",
 	"description": "This mod adds waterlogged property to many vanilla blocks",
 	"authors": ["zer"],
@@ -11,7 +11,6 @@
 	},
 	"license": "GPL-3.0",
 	"icon": "assets/morewaterlogging/icon.png",
-	"environment": "*",
 	"entrypoints": {
 		"main": [
 			"com.zer.morewaterlogging.MoreWaterLoggingMod"
@@ -21,8 +20,8 @@
 		"morewaterlogging.mixins.json"
 	],
 	"depends": {
-		"fabricloader": "*",
-		"minecraft": ">=1.18 <=1.18.1"
+		"minecraft": ">=1.18 <=1.18.1",
+		"statement": "${statement_version}"
 	},
 	"custom": {
 		"modmenu": {

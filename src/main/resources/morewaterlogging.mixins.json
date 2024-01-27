@@ -1,25 +1,25 @@
 {
-  "required": true,
-  "package": "com.zer.morewaterlogging.mixin",
-  "compatibilityLevel": "JAVA_17",
-  "mixins": [
-    "AbstractBlockMixin",
-    "BlockMixin",
-    "GetPlacementStateMixin",
-    "GetStateForNeighborUpdateMixin",
-    "NewWaterloggable",
-    "special.BedBlockMixin",
-    "special.CakeBlockMixin",
-    "special.CandleCakeBlockMixin",
-    "special.DoorBlockMixin",
-    "special.DragonEggBlockMixin",
-    "special.FlowerPotBlockMixin",
-    "special.PistonBlockEntityMixin",
-    "special.PistonBlockMixin",
-    "special.RedstoneWireBlockMixin"
-  ],
-  "injectors": {
-    "defaultRequire": 1
-  },
-  "minVersion": "0.8"
+    "required": true,
+    "package": "com.zer.morewaterlogging.mixin",
+    "compatibilityLevel": "JAVA_17",
+    "mixins": [
+        "AbstractBlockMixin",
+        "BlockMixin",
+        "GetPlacementStateMixin",
+        "GetStateForNeighborUpdateMixin",
+        "NewWaterloggable",
+        "special.BedBlockMixin",
+        "special.CakeBlockMixin",
+        "special.CandleCakeBlockMixin",
+        "special.DoorBlockMixin",
+        "special.DragonEggBlockMixin",
+        "special.FlowerPotBlockMixin",
+        "special.PistonBlockEntityMixin",
+        "special.PistonBlockMixin",
+        "special.RedstoneWireBlockMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    },
+    "minVersion": "0.8"
 }
