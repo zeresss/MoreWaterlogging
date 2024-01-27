@@ -3,47 +3,34 @@ plugins {
 	id 'maven-publish'
 }
 
-version = project.mod_version
-group = project.maven_group
-
-base {
-	archivesName = project.archives_base_name
-}
-
 repositories {
-	maven {url = "https://jitpack.io"} // statement lib
+	maven {url = "https://jitpack.io"}
 }
 
 dependencies {
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	minecraft "com.mojang:minecraft:${minecraft_version}"
+	mappings "net.fabricmc:yarn:${yarn_mappings}:v2"
+	modImplementation "net.fabricmc:fabric-loader:${loader_version}"
 
-	// statement lib
-	modApi("com.github.Virtuoel:Statement:${project.statement_version}", {
+	modApi("com.github.Virtuoel:Statement:${statement_version}", {
 		exclude group: "net.fabricmc.fabric-api"
 	})
 }
 
 processResources {
-	inputs.property "version", project.version
 	filesMatching("fabric.mod.json") {
-		expand "version": project.version
+		expand(
+			"mod_version": version,
+			"statement_version": statement_version
+		)
 	}
 }
 
-tasks.withType(JavaCompile).configureEach {
-	it.options.release = 17
-}
-
 java {
-	withSourcesJar()
 	sourceCompatibility = JavaVersion.VERSION_17
 	targetCompatibility = JavaVersion.VERSION_17
 }
 
 jar {
-	from("LICENSE") {
-		rename { "${it}_${project.base.archivesName.get()}"}
-	}
+	from("LICENSE")
 }
