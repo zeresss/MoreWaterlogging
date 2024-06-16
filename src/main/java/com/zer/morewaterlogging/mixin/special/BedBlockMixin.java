@@ -23,7 +23,7 @@ public abstract class BedBlockMixin {
      * makes head bed part not copy foot bed part waterlogged property
      */
     @ModifyArgs(method = "onPlaced", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
-    public void onPlaced(Args args, World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
+    private void onPlaced(Args args, World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
         args.set(1, args.<BlockState>get(1).with(Properties.WATERLOGGED, world.getFluidState(args.get(0)).getFluid() == Fluids.WATER));
     }
 
@@ -32,7 +32,7 @@ public abstract class BedBlockMixin {
      * makes head bed part not cause air pocket when bed is broken
      */
     @ModifyArgs(method = "onBreak", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
-    public void onBreak(Args args, World world, BlockPos pos, BlockState state, PlayerEntity player) {
+    private void onBreak(Args args, World world, BlockPos pos, BlockState state, PlayerEntity player) {
         if (world.getFluidState(args.get(0)).getFluid() == Fluids.WATER) {
             args.set(1, Blocks.WATER.getDefaultState());
         }
