@@ -15,8 +15,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(CandleCakeBlock.class)
 public abstract class CandleCakeBlockMixin {
 
-    @Shadow @Final public static BooleanProperty LIT;
-
     /**
      * @since 1.0.1
      * makes impossible to lit candle cake when waterlogged
@@ -26,7 +24,7 @@ public abstract class CandleCakeBlockMixin {
         cir.setReturnValue(
             state.isIn(
                 BlockTags.CANDLE_CAKES, (statex) ->
-                    !state.get(LIT) && !state.get(Properties.WATERLOGGED)
+                    !state.get(Properties.LIT) && !state.get(Properties.WATERLOGGED)
             )
         );
     }

@@ -24,8 +24,9 @@ public abstract class BlockMixin {
      */
     @Inject(method = "<init>", at = @At("TAIL"))
     public void init(AbstractBlock.Settings settings, CallbackInfo ci) {
-        if (this instanceof NewWaterloggable && defaultState.contains(Properties.WATERLOGGED))
+        if (this instanceof NewWaterloggable && defaultState.contains(Properties.WATERLOGGED)) {
             defaultState = defaultState.with(Properties.WATERLOGGED, false);
+        }
     }
 
     /**
@@ -34,8 +35,9 @@ public abstract class BlockMixin {
      */
     @Inject(method = "setDefaultState", at = @At("TAIL"))
     public void setDefaultState(BlockState state, CallbackInfo ci) {
-        if (this instanceof NewWaterloggable && state.contains(Properties.WATERLOGGED))
+        if (this instanceof NewWaterloggable && defaultState.contains(Properties.WATERLOGGED)) {
             defaultState = defaultState.with(Properties.WATERLOGGED, false);
+        }
     }
 
     /**
@@ -44,9 +46,9 @@ public abstract class BlockMixin {
      */
     @Inject(method = "getPlacementState", at = @At("RETURN"), cancellable = true)
     public void getPlacementState(ItemPlacementContext ctx, CallbackInfoReturnable<BlockState> cir) {
-        BlockState returnValue = cir.getReturnValue();
-        if (this instanceof NewWaterloggable && returnValue != null && returnValue.contains(Properties.WATERLOGGED) && ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER)
-            cir.setReturnValue(returnValue.with(Properties.WATERLOGGED, true));
+        if (this instanceof NewWaterloggable && cir.getReturnValue() != null && cir.getReturnValue().contains(Properties.WATERLOGGED)) {
+            cir.setReturnValue(cir.getReturnValue().with(Properties.WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER));
+        }
     }
 
 }

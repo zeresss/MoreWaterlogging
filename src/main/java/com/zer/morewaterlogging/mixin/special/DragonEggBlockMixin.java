@@ -21,12 +21,7 @@ public class DragonEggBlockMixin {
      */
     @ModifyArgs(method = "teleport", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
     public void teleport(Args args, BlockState state, World world, BlockPos pos) {
-        boolean isWaterlogged = state.get(Properties.WATERLOGGED);
-        boolean isOfWater = world.getFluidState(args.get(0)).getFluid() == Fluids.WATER;
-        if (!isWaterlogged && isOfWater)
-            args.set(1, state.with(Properties.WATERLOGGED, true));
-        else if (isWaterlogged && !isOfWater)
-            args.set(1, state.with(Properties.WATERLOGGED, false));
+        args.set(1, state.with(Properties.WATERLOGGED, world.getFluidState(args.get(0)).getFluid() == Fluids.WATER));
     }
 
     /**
@@ -35,10 +30,7 @@ public class DragonEggBlockMixin {
      */
     @Redirect(method = "teleport", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;isAir()Z"))
     public boolean teleportIntoWater(BlockState instance, BlockState state, World world, BlockPos pos) {
-        if (instance.getFluidState().getFluid() == Fluids.WATER)
-            return true;
-        else
-            return instance.isAir();
+        return instance.isAir() || instance.getFluidState().getFluid() == Fluids.WATER;
     }
 
 }

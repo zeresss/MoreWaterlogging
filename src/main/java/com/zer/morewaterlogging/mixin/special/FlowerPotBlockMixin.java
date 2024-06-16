@@ -22,8 +22,7 @@ public abstract class FlowerPotBlockMixin {
      */
     @ModifyArgs(method = "onUse", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
     public void onUse(Args args, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (state.get(Properties.WATERLOGGED))
-            args.set(1, args.<BlockState>get(1).with(Properties.WATERLOGGED, true));
+        args.set(1, args.<BlockState>get(1).with(Properties.WATERLOGGED, world.getBlockState(pos).get(Properties.WATERLOGGED)));
     }
 
 }
