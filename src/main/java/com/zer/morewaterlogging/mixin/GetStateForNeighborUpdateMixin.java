@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin({
     AbstractPressurePlateBlock.class, BannerBlock.class, BedBlock.class, BellBlock.class, CakeBlock.class,
     CandleCakeBlock.class, CarpetBlock.class, DoorBlock.class, FenceGateBlock.class, FlowerPotBlock.class,
-    PistonHeadBlock.class, WallRedstoneTorchBlock.class, RedstoneWireBlock.class, RepeaterBlock.class,
+    PistonHeadBlock.class, WallRedstoneTorchBlock.class, RedstoneWireBlock.class, RepeaterBlock.class, TorchBlock.class,
     WallBannerBlock.class, WallTorchBlock.class,
 })
 public abstract class GetStateForNeighborUpdateMixin {
@@ -25,8 +25,9 @@ public abstract class GetStateForNeighborUpdateMixin {
      */
     @Inject(method = "getStateForNeighborUpdate", at = @At("HEAD"))
     public void getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos, CallbackInfoReturnable<BlockState> cir) {
-        if (this instanceof NewWaterloggable && state.contains(Properties.WATERLOGGED) && state.get(Properties.WATERLOGGED))
+        if (this instanceof NewWaterloggable && state.contains(Properties.WATERLOGGED) && state.get(Properties.WATERLOGGED)) {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
     }
 
 }
