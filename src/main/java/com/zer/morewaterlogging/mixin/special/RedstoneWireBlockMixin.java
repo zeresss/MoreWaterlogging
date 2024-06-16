@@ -18,10 +18,9 @@ public abstract class RedstoneWireBlockMixin {
      * @since 1.0.0
      * adds waterlogged property to default wire state
      */
-    @Inject(method = "getDefaultWireState", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "method_27843", at = @At("RETURN"), cancellable = true)
     public void getDefaultWireState(BlockView world, BlockState state, BlockPos pos, CallbackInfoReturnable<BlockState> cir) {
-        if (world.getFluidState(pos).isOf(Fluids.WATER))
-            cir.setReturnValue(cir.getReturnValue().with(Properties.WATERLOGGED, true));
+        cir.setReturnValue(cir.getReturnValue().with(Properties.WATERLOGGED, world.getFluidState(pos).getFluid() == Fluids.WATER));
     }
 
 }
