@@ -23,7 +23,7 @@ public abstract class GetPlacementStateMixin {
      * makes block initially waterlogged when placed underwater
      */
     @Inject(method = "getPlacementState(Lnet/minecraft/item/ItemPlacementContext;)Lnet/minecraft/block/BlockState;", at = @At("RETURN"), cancellable = true)
-    public void getPlacementState(ItemPlacementContext ctx, CallbackInfoReturnable<BlockState> cir) {
+    private void getPlacementState(ItemPlacementContext ctx, CallbackInfoReturnable<BlockState> cir) {
         if (this instanceof NewWaterloggable && cir.getReturnValue() != null && cir.getReturnValue().contains(Properties.WATERLOGGED)) {
             cir.setReturnValue(cir.getReturnValue().with(Properties.WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER));
         }
