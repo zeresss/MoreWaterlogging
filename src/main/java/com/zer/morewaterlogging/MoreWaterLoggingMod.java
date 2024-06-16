@@ -15,9 +15,8 @@ public class MoreWaterLoggingMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		for (Map.Entry<RegistryKey<Block>, Block> entry : Registry.BLOCK.getEntrySet()) {
-			Block block = entry.getValue();
-			if (block instanceof NewWaterloggable) {
-				StateRefresher.INSTANCE.addBlockProperty(block, Properties.WATERLOGGED, false);
+			if (entry.getValue() instanceof NewWaterloggable) {
+				StateRefresher.INSTANCE.addBlockProperty(entry.getValue(), Properties.WATERLOGGED, false);
 			}
 		}
 		StateRefresher.INSTANCE.reorderBlockStates();
