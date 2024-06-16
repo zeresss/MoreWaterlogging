@@ -10,7 +10,7 @@ import virtuoel.statement.api.StateRefresher;
 
 import java.util.Map;
 
-public class MoreWaterLoggingMod implements ModInitializer {
+public class MoreWaterloggingMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
