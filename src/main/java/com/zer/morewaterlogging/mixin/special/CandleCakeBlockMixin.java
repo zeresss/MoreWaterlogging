@@ -2,20 +2,15 @@ package com.zer.morewaterlogging.mixin.special;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CandleCakeBlock;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.tag.BlockTags;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(CandleCakeBlock.class)
 public abstract class CandleCakeBlockMixin {
-
-    @Shadow @Final public static BooleanProperty LIT;
 
     /**
      * @since 1.0.1
@@ -26,7 +21,7 @@ public abstract class CandleCakeBlockMixin {
         cir.setReturnValue(
             state.isIn(
                 BlockTags.CANDLE_CAKES, (statex) ->
-                    !state.get(LIT) && !state.get(Properties.WATERLOGGED)
+                    !state.get(Properties.LIT) && !state.get(Properties.WATERLOGGED)
             )
         );
     }
