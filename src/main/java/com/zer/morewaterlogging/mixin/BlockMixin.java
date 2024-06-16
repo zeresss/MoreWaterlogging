@@ -23,7 +23,7 @@ public abstract class BlockMixin {
      * adds waterlogged property to default state
      */
     @Inject(method = "<init>", at = @At("TAIL"))
-    public void init(AbstractBlock.Settings settings, CallbackInfo ci) {
+    private void init(AbstractBlock.Settings settings, CallbackInfo ci) {
         if (this instanceof NewWaterloggable && defaultState.contains(Properties.WATERLOGGED)) {
             defaultState = defaultState.with(Properties.WATERLOGGED, false);
         }
@@ -34,7 +34,7 @@ public abstract class BlockMixin {
      * adds waterlogged property to set default state method
      */
     @Inject(method = "setDefaultState", at = @At("TAIL"))
-    public void setDefaultState(BlockState state, CallbackInfo ci) {
+    private void setDefaultState(BlockState state, CallbackInfo ci) {
         if (this instanceof NewWaterloggable && defaultState.contains(Properties.WATERLOGGED)) {
             defaultState = defaultState.with(Properties.WATERLOGGED, false);
         }
@@ -45,7 +45,7 @@ public abstract class BlockMixin {
      * makes block initially waterlogged when placed underwater
      */
     @Inject(method = "getPlacementState", at = @At("RETURN"), cancellable = true)
-    public void getPlacementState(ItemPlacementContext ctx, CallbackInfoReturnable<BlockState> cir) {
+    private void getPlacementState(ItemPlacementContext ctx, CallbackInfoReturnable<BlockState> cir) {
         if (this instanceof NewWaterloggable && cir.getReturnValue() != null && cir.getReturnValue().contains(Properties.WATERLOGGED)) {
             cir.setReturnValue(cir.getReturnValue().with(Properties.WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER));
         }

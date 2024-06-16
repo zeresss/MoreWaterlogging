@@ -20,7 +20,7 @@ public class DragonEggBlockMixin {
      * makes dragon egg teleport waterlogged only if it teleports in water
      */
     @ModifyArgs(method = "teleport", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
-    public void teleport(Args args, BlockState state, World world, BlockPos pos) {
+    private void teleport(Args args, BlockState state, World world, BlockPos pos) {
         args.set(1, state.with(Properties.WATERLOGGED, world.getFluidState(args.get(0)).getFluid() == Fluids.WATER));
     }
 
@@ -29,7 +29,7 @@ public class DragonEggBlockMixin {
      * makes possible for dragon egg to teleport into water
      */
     @Redirect(method = "teleport", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;isAir()Z"))
-    public boolean teleportIntoWater(BlockState instance, BlockState state, World world, BlockPos pos) {
+    private boolean teleportIntoWater(BlockState instance, BlockState state, World world, BlockPos pos) {
         return instance.isAir() || instance.getFluidState().getFluid() == Fluids.WATER;
     }
 
