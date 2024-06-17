@@ -10,11 +10,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({
-    AbstractRedstoneGateBlock.class, AnvilBlock.class, BannerBlock.class, BedBlock.class,
-    BellBlock.class, DoorBlock.class, EndPortalFrameBlock.class, EndRodBlock.class, FenceGateBlock.class,
-    HopperBlock.class, LeavesBlock.class, LecternBlock.class, PistonBlock.class, RedstoneWireBlock.class,
-    RepeaterBlock.class, SkullBlock.class, StonecutterBlock.class, WallBannerBlock.class, WallMountedBlock.class,
-    WallRedstoneTorchBlock.class, WallSkullBlock.class, WallTorchBlock.class
+    AnvilBlock.class, BannerBlock.class, BedBlock.class, BellBlock.class, DoorBlock.class, EndPortalFrameBlock.class,
+    EndRodBlock.class, FenceGateBlock.class, HopperBlock.class, LeavesBlock.class, LecternBlock.class, PistonBlock.class,
+    SkullBlock.class, StonecutterBlock.class, ShulkerBoxBlock.class, WallBannerBlock.class, WallMountedBlock.class, WallSkullBlock.class
 })
 public abstract class GetPlacementStateMixin {
 

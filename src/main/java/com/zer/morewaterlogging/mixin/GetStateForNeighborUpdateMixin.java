@@ -13,9 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin({
     AbstractPressurePlateBlock.class, BannerBlock.class, BedBlock.class, BellBlock.class, CakeBlock.class,
-    CandleCakeBlock.class, CarpetBlock.class, DoorBlock.class, FenceGateBlock.class, FlowerPotBlock.class,
-    PistonHeadBlock.class, WallRedstoneTorchBlock.class, RedstoneWireBlock.class, RepeaterBlock.class,
-    WallBannerBlock.class, WallTorchBlock.class,
+    CandleCakeBlock.class, CarpetBlock.class, DoorBlock.class, FenceGateBlock.class, PistonHeadBlock.class, WallBannerBlock.class
 })
 public abstract class GetStateForNeighborUpdateMixin {
 
