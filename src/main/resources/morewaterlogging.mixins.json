@@ -1,5 +1,6 @@
 {
     "required": true,
+    "minVersion": "0.8",
     "package": "com.zer.morewaterlogging.mixin",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
@@ -13,10 +14,8 @@
         "special.CandleCakeBlockMixin",
         "special.DoorBlockMixin",
         "special.DragonEggBlockMixin",
-        "special.FlowerPotBlockMixin",
         "special.PistonBlockEntityMixin",
-        "special.PistonBlockMixin",
-        "special.RedstoneWireBlockMixin"
+        "special.PistonBlockMixin"
     ],
     "injectors": {
         "defaultRequire": 1
