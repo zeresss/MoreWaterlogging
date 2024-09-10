@@ -9,14 +9,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(CandleCakeBlock.class)
+@Mixin(value = CandleCakeBlock.class)
 public abstract class CandleCakeBlockMixin {
 
     /**
      * @since 1.0.1
      * makes impossible to lit candle cake when waterlogged
      */
-    @Inject(method = "canBeLit", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "canBeLit", at = @At(value = "RETURN"), cancellable = true)
     private static void canBeLit(BlockState state, CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(
             state.isIn(

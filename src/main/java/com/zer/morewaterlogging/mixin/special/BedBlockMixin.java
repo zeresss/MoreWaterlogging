@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
-@Mixin(BedBlock.class)
+@Mixin(value = BedBlock.class)
 public abstract class BedBlockMixin {
 
     /**
