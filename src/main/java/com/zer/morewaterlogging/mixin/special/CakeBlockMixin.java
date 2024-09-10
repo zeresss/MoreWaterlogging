@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
-@Mixin(CakeBlock.class)
+@Mixin(value = CakeBlock.class)
 public abstract class CakeBlockMixin {
 
     /**

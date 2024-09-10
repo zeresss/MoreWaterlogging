@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
-@Mixin(PistonBlockEntity.class)
+@Mixin(value = PistonBlockEntity.class)
 public abstract class PistonBlockEntityMixin {
 
     /**

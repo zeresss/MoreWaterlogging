@@ -3,7 +3,7 @@ package com.zer.morewaterlogging.mixin;
 import net.minecraft.block.*;
 import org.spongepowered.asm.mixin.Mixin;
 
-@Mixin({
+@Mixin(value = {
     AbstractBannerBlock.class, AbstractPressurePlateBlock.class, AbstractSkullBlock.class, AnvilBlock.class, BeaconBlock.class,
     BedBlock.class, BellBlock.class, BrewingStandBlock.class, ButtonBlock.class, CakeBlock.class, CandleCakeBlock.class,
     CarpetBlock.class, ComposterBlock.class, DaylightDetectorBlock.class, DoorBlock.class, DragonEggBlock.class,
