@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
-@Mixin(PistonBlock.class)
+@Mixin(value = PistonBlock.class)
 public abstract class PistonBlockMixin {
 
     /**
