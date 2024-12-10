@@ -1,6 +1,3 @@
-# More Waterlogging
-![Waterlogging showcase](https://i.imgur.com/8RNmCcf.png)
-
 ## Features
 This mod adds waterlogged property to these blocks:  
 Anvil, Banner, Beacon, Bed, Bell, Brewing Stand, Button, Cake, Carpet, Composter, Daylight Detector, Door, Dragon Egg, Enchanting Table, End Portal Frame, End Rod, Fence Gate, Grindstone, Head, Hopper, Leaves, Lectern, Lever, Piston, Pressure Plate, Shulker Box, Spawner, Stonecutter
