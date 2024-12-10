@@ -4,7 +4,7 @@ Anvil, Banner, Beacon, Bed, Bell, Brewing Stand, Button, Cake, Carpet, Composter
 
 ## FAQ
 **Q: Can you port this mod to X version?**  
-A: Yes, as long as [statement](https://github.com/Virtuoel/Statement) has a compatible version.
+A: Yes, I will try to port this mod to as many versions as possible as long as [statement](https://github.com/Virtuoel/Statement) has a compatible version.
 
 **Q: Can you port this mod to X loader?**  
 A: I do not plan to add support for any other loader other than Fabric and Quilt.
