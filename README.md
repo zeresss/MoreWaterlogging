@@ -1,6 +1,6 @@
 ## Features
 This mod adds waterlogged property to these blocks:  
-Anvil, Banner, Beacon, Bed, Bell, Brewing Stand, Button, Cake, Carpet, Composter, Daylight Detector, Door, Dragon Egg, Enchanting Table, End Portal Frame, End Rod, Fence Gate, Grindstone, Head, Hopper, Leaves, Lectern, Lever, Piston, Pressure Plate, Shulker Box, Spawner, Stonecutter
+Anvil, Banner, Beacon, Bed, Bell, Brewing Stand, Button, Cake, Carpet, Composter, Daylight Detector, Door, Dragon Egg, Enchanting Table, End Portal Frame, End Rod, Fence Gate, Grindstone, Head, Hopper, Leaves, Lectern, Lever, Piston, Pressure Plate, Shulker Box, Spawner, Stonecutter.
 
 ## FAQ
 **Q: Can you port this mod to X version?**  
